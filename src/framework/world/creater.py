@@ -14,6 +14,6 @@ class Creater:
         session.commit()
 
     def __create_random_node(self):
-        node = Node(id_generator.generate(), randint(0, 10), randint(0,10))
+        node = Node(id_generator.generate(), randint(0, 1000), randint(0, 1000))
         session.add(node)
         session.commit()
