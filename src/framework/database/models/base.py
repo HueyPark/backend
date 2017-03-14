@@ -1,5 +1,5 @@
 from datetime import datetime
-from sqlalchemy import Column, BigInteger, Integer, TIMESTAMP, func
+from sqlalchemy import Column, BigInteger, ForeignKey, Integer, TIMESTAMP, func
 from sqlalchemy.ext.declarative import declarative_base
 
 Base = declarative_base()
@@ -43,3 +43,10 @@ class ProductionBase(Base):
 
     def __repr__(self):
         return 'Production / id: {}, create_time: {}'.format(self.id, self.create_time)
+
+
+class UnitBase(Base):
+    __tablename__ = 'unit'
+
+    id = Column(BigInteger, primary_key=True, autoincrement=False)
+    node_id = Column(BigInteger, ForeignKey(NodeBase.id))
