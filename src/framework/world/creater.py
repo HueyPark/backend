@@ -1,4 +1,4 @@
-from framework.database.models.node import Node
+from framework.database.models import Node, Unit
 from framework.database.session import session
 from framework.id_generator import id_generator
 
@@ -12,5 +12,6 @@ class Creater:
         session.commit()
 
     def delete_nodes(self):
+        session.query(Unit).delete()
         session.query(Node).delete()
         session.commit()
