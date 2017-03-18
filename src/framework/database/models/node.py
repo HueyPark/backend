@@ -8,4 +8,12 @@ class Node(NodeBase):
         self.pos_y = pos_y
 
     def to_dict(self):
-        return {'id': str(self.id), 'pos': {'x': self.pos_x, 'y': self.pos_y}}
+        node = {
+            'id': str(self.id),
+            'pos': {
+                    'x': self.pos_x,
+                    'y': self.pos_y
+                },
+            'units': list(map(lambda unit: unit.to_dict(), self.units))
+        }
+        return node
